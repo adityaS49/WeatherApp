@@ -9,8 +9,10 @@ import rain from "./assets/rain.png";
 import snow from "./assets/snow.png";
 import sunny  from "./assets/sunny.webp"; 
 import wind  from "./assets/wind.png"; 
+
 function Weather() {
-  let api_Key = "9e6740581d2b9ce97c2a0f2a2ee015ef";
+  
+  const API_KEY = process.env. api_Key;
   const handleClick = () => {
     search();
   };
@@ -29,7 +31,7 @@ function Weather() {
     if (element[0].value === "") {
       return 0;
     }
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&units=Metric&appid=${api_Key}`;
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&units=Metric&appid=${API_KEY}`;
     let response = await fetch(url);
     let data = await response.json();
     const humidity = document.getElementsByClassName("humidity-percent");
